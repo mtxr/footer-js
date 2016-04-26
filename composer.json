@@ -1,6 +1,7 @@
 {
     "name": "mtxr/footer-js",
     "type": "library",
+    "description": "Manage JS to use all tags on the bottom of the page. Help at Google Pagespeed Insights optimizations.",
     "license": "Apache-2.0",
     "authors": [
         {
