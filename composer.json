@@ -16,8 +16,8 @@
         "phpmd/phpmd": "*"
     },
     "autoload": {
-        "psr-4": {
-            "Mtxr\\": "src/"
+        "psr-0": {
+            "Mtxr": "src/"
         }
     }
 }
