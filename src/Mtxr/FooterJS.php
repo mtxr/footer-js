@@ -9,26 +9,41 @@ class FooterJS
         'files' => array()
     );
 
+    private static $debug = false;
+    private static $position = 0;
+
     public static function getQueue()
     {
         return self::$jsQueue;
     }
 
+    public static function setDebug($status)
+    {
+        return self::$debug = $status;
+    }
+
     public static function collect($position = null)
     {
-        self::$jsQueue['inline'][$position] = '';
+        self::$position = $position ? : self::$position;
+        self::$jsQueue['inline'][self::$position] = '';
+        if (self::$debug) {
+            $bt = debug_backtrace();
+            $caller = array_shift($bt);
+            if (!empty($caller['file']) && !empty($caller['line'])) {
+                $caller['line']++;
+                self::$jsQueue['inline'][self::$position] = "<!-- {$caller['file']}:{$caller['line']} -->" . PHP_EOL;
+            }
+        }
         ob_start();
     }
 
     public static function endCollect($position = null)
     {
+        self::$position = $position ? : self::$position;
         $content = ob_get_contents();
         ob_end_clean();
-        if ($position) {
-            self::$jsQueue['inline'][$position] = $content;
-            return;
-        }
-        self::$jsQueue['inline'][] = $content;
+        self::$jsQueue['inline'][self::$position] .= $content;
+        self::$position++;
     }
 
     public static function addFile($path, array $attributtes = array())
