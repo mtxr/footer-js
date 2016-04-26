@@ -9,7 +9,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {
+    "require-dev": {
         "php": ">=5.3.0",
         "squizlabs/php_codesniffer": "*",
         "fabpot/php-cs-fixer": "*",
