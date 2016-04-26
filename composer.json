@@ -1,0 +1,23 @@
+{
+    "name": "mtxr/php-js-manager",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Matheus Teixeira",
+            "email": "matheus.mtxr@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.3.0",
+        "squizlabs/php_codesniffer": "*",
+        "fabpot/php-cs-fixer": "*",
+        "phpmd/phpmd": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mtxr": "src/"
+        }
+    }
+}
